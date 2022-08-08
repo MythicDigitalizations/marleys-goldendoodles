@@ -1,0 +1,30 @@
+﻿@page
+@model PuppyWaitingListModel
+@{
+    ViewData["Title"] = "Puppy Waiting List";
+}
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <p class="padded-paragraph">Use this page to take orders/reservations for future puppies.</p>
+    <div id="information-form">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" required="true"><br><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required="true"><br><br>
+        <label for="phone">10-Digit Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required="true"
+            title="10 digits only. No letters or symbols."><br><br>
+        <input type="button" id="validate-button" value="Ready to Pay" onclick="return validateInput()">
+    </div>
+    <div id="smart-button-container">
+        <div style="text-align: center;">
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+    <div class="puppy-display">
+        <img class="puppy-img" src="~/img/shutterstock_1715015680.jpg" alt="Goldendoodle puppy playing in the grass."
+            width="700" height="500">
+        <img class="puppy-img" src="~/img/shutterstock_1014511450.jpg" alt="Goldendoodle puppy playing in the grass."
+            width="700" height="500">
+    </div>
+</div>

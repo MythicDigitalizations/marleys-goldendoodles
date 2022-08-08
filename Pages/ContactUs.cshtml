@@ -1,0 +1,24 @@
+﻿@page
+@model ContactUsModel
+@{
+        ViewData["Title"] = "Contact Us";
+}
+<div class="text-center">
+        <h1 class="display-4">@ViewData["Title"]</h1>
+        <p>This page provides you with our organization's contact information.</p>
+        <h2>Mailing Address</h2>
+        <p class="contact-us-paragraph"><a
+                        href="https://earth.google.com/web/search/225+COLLEGE+DR,+ORANGE+PARK,+FL+32065-9998/"
+                        target="_blank">Marley's Goldendoodles<br />PO Box 27891, Orange Park, FL 32065-9998</a></p>
+        <h2>Phone Numbers</h2>
+        <p class="contact-us-paragraph"><span class="telephone-number-label">Rick Boyette: </span><span
+                        class="telephone-number-data">(904) 535-6605</p>
+        <p class="contact-us-paragraph"><span class="telephone-number-label">Shirley Boyette: </span><span
+                        class="telephone-number-data">(904) 728-4196</p>
+        <div class="puppy-display">
+                <img class="puppy-img" src="~/img/shutterstock_1178992045.jpg"
+                        alt="Two goldendoodle puppies running and playing on a beach." width="700" height="500">
+                <img class="puppy-img" src="~/img/shutterstock_2057194082.jpg"
+                        alt="Goldendoodle puppy relaxing in a flower pot on the grass." width="700" height="500">
+        </div>
+</div>
