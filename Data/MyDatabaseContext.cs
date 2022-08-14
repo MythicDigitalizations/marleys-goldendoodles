@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace MarleysGoldendoodles.Models
 {
@@ -13,6 +9,46 @@ namespace MarleysGoldendoodles.Models
         {
         }
 
-        public DbSet<MarleysGoldendoodles.Models.Person>? Person { get; set; }
+        public async Task<int> CreateWaitlistEntry(string FirstName, string LastName, string PhoneNumber)
+        {
+            var retVal = 0;
+
+            retVal = await this.Database.ExecuteSqlRawAsync(@"
+                EXECUTE @RC = [dbo].[CreateWaitlistEntry] 
+                   @FirstName
+                  ,@LastName
+                  ,@PhoneNumber
+                GO
+            ", retVal, FirstName, LastName, PhoneNumber);
+
+            return retVal;
+        }
+
+        public async Task<int> UpdateWaitlistEntry(int WaitListId, decimal AmountPaid)
+        {
+            var retVal = 0;
+
+            retVal = await this.Database.ExecuteSqlRawAsync(@"
+                EXECUTE @RC = [dbo].[CreateWaitlistEntry] 
+                   @WaitListId
+                  ,@AmountPaid
+                GO
+            ", retVal, WaitListId, AmountPaid);
+
+            return retVal;
+        }
+
+        public async Task<int> RemoveWaitlistEntry(int WaitListId)
+        {
+            var retVal = 0;
+
+            retVal = await this.Database.ExecuteSqlRawAsync(@"
+                EXECUTE @RC = [dbo].[CreateWaitlistEntry] 
+                   @WaitListId
+                GO
+            ", retVal, WaitListId);
+
+            return retVal;
+        }
     }
 }
