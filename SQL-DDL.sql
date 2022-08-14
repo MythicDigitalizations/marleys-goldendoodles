@@ -54,7 +54,7 @@ BEGIN
 	DECLARE @PreAmountOwed AS numeric;
 	DECLARE @PostAmountOwed As numeric;
 	SET @PreAmountOwed = (SELECT AmountOwed FROM WaitList WHERE Id = @WaitListId)
-	IF (@PreAmountOwed IS NULL) THROW 50001, 'Error: Cannot find amount owed.', 1
+	IF (@PreAmountOwed IS NULL) THROW 50001, 'Error: Cannot find amount owed for this waitlist entry.', 1
     SET @PostAmountOwed = @PreAmountOwed - @AmountPaid
 	IF (@PostAmountOwed < 0) THROW 50002, 'Error: Amount owed after update is negative.', 2
 	IF (@PostAmountOwed = 0) UPDATE WaitList SET DatePuppySecured = CURRENT_TIMESTAMP WHERE Id = @WaitListId
