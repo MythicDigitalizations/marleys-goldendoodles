@@ -46,7 +46,8 @@ function initPayPalButton(fname, lname, phone) {
           element.innerHTML = "";
           element.innerHTML = "<h3>Thank you for your payment!</h3>";
 
-          // Or go to another URL:  actions.redirect('thank_you.html');
+          // Call CreateWaitlistEntry Stored Procedure
+          $.post( `/create?firstName=${fname}&lastName=${lname}&phoneNumber=${phone}` );
         });
       },
 
