@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace MarleysGoldendoodles.Models
 {
@@ -13,13 +14,35 @@ namespace MarleysGoldendoodles.Models
         {
             var retVal = 0;
 
+            var parameters = new SqlParameter[] {
+                        new SqlParameter() {
+                            ParameterName = "@FirstName",
+                            SqlDbType =  System.Data.SqlDbType.NVarChar,
+                            Size = 50,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = FirstName
+                        },
+                        new SqlParameter() {
+                            ParameterName = "@LastName",
+                            SqlDbType =  System.Data.SqlDbType.NVarChar,
+                            Size = 50,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = LastName
+                        },
+                        new SqlParameter() {
+                            ParameterName = "@PhoneNumber",
+                            SqlDbType =  System.Data.SqlDbType.NVarChar,
+                            Size = 10,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = PhoneNumber
+                        }};
+
             retVal = await this.Database.ExecuteSqlRawAsync(@"
-                EXECUTE @RC = [dbo].[CreateWaitlistEntry] 
+                EXEC [dbo].[CreateWaitlistEntry] 
                    @FirstName
                   ,@LastName
                   ,@PhoneNumber
-                GO
-            ", retVal, FirstName, LastName, PhoneNumber);
+            ", parameters);
 
             return retVal;
         }
@@ -28,12 +51,25 @@ namespace MarleysGoldendoodles.Models
         {
             var retVal = 0;
 
+            var parameters = new SqlParameter[] {
+                        new SqlParameter() {
+                            ParameterName = "@WaitListId",
+                            SqlDbType =  System.Data.SqlDbType.Int,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = WaitListId
+                        },
+                        new SqlParameter() {
+                            ParameterName = "@AmountPaid",
+                            SqlDbType =  System.Data.SqlDbType.Decimal,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = AmountPaid
+                        }};
+
             retVal = await this.Database.ExecuteSqlRawAsync(@"
-                EXECUTE @RC = [dbo].[CreateWaitlistEntry] 
+                EXEC [dbo].[UpdateWaitlistEntry] 
                    @WaitListId
                   ,@AmountPaid
-                GO
-            ", retVal, WaitListId, AmountPaid);
+            ", parameters);
 
             return retVal;
         }
@@ -42,11 +78,18 @@ namespace MarleysGoldendoodles.Models
         {
             var retVal = 0;
 
+            var parameters = new SqlParameter[] {
+                        new SqlParameter() {
+                            ParameterName = "@WaitListId",
+                            SqlDbType =  System.Data.SqlDbType.Int,
+                            Direction = System.Data.ParameterDirection.Input,
+                            Value = WaitListId
+                        }};
+
             retVal = await this.Database.ExecuteSqlRawAsync(@"
-                EXECUTE @RC = [dbo].[CreateWaitlistEntry] 
+                EXEC [dbo].[RemoveWaitlistEntry] 
                    @WaitListId
-                GO
-            ", retVal, WaitListId);
+            ", parameters);
 
             return retVal;
         }
