@@ -75,9 +75,6 @@ function validateInput() {
   const regexp = /^([0-9]){10}$/;
 
   if (regexp.test(phone)) {
-    $.post(
-      `/create?firstName=${fname}&lastName=${lname}&phoneNumber=${phone}`
-    );
     initPayPalButton(fname, lname, phone);
   } else {
     alert(
