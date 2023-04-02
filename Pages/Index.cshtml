@@ -4,12 +4,14 @@
     ViewData["Title"] = "Home";
 }
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">@ViewData["Title"]</h1>
     <p>Reserve a place on our <a asp-area="" asp-page="/PuppyWaitingList">waiting list</a> today!</p>
+    <p>Also check out our <a asp-area="" asp-page="/AvailablePuppies">available puppies</a>! Our beautiful female
+     Ember just recently gave birth to a litter of seven puppies!</p>
     <div class="puppy-display">
         <img class="puppy-img" src="~/img/shutterstock_1957528357_sm.jpg"
-            alt="Goldendoodle puppy playing with stuffed animal." width="700" height="500">
+            alt="Goldendoodle puppy playing with stuffed animal." width="600" height="400">
         <img class="puppy-img" src="~/img/shutterstock_1754281478_sm.jpg" alt="Goldendoodle puppy playing in the grass."
-            width="700" height="500">
+            width="600" height="400">
     </div>
 </div>

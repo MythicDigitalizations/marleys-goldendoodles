@@ -19,6 +19,12 @@ body {
   align-items: center;
 }
 
+.title-display {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .puppy-display {
   display: flex;
   flex-direction: row;
